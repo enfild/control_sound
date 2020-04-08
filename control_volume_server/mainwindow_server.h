@@ -18,6 +18,10 @@
 #include <QWidgetAction>
 #include <QLabel>
 
+#include <windows.h>
+
+#define DEFAULT_PORT    8080
+
 namespace Ui {
 class MainWindow_Server;
 }
@@ -33,8 +37,13 @@ public:
 
 private:
     Ui::MainWindow_Server *ui;
+
     int getVolumeLevel();
     void setVolumeLevel(int Volume);
+    bool getMuteStatus();
+    void setMuteVolume();
+
+
     QTcpServer *server;
     /* Объявляем объект будущей иконки приложения для трея */
     QSystemTrayIcon         * trayIcon;

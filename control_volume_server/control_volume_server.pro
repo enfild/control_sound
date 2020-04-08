@@ -33,6 +33,7 @@ HEADERS += \
 
 FORMS += \
         mainwindow_server.ui
+#LIBS += C:/Qt/mathgl-1.11.2-mingw.i686/lib/
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

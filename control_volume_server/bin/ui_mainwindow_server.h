@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QSlider>
@@ -29,6 +30,7 @@ public:
     QSlider *horizontalSlider;
     QCheckBox *checkBox_tray;
     QComboBox *comboBox_Clients;
+    QLabel *label_IP;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -50,6 +52,9 @@ public:
         comboBox_Clients = new QComboBox(centralWidget);
         comboBox_Clients->setObjectName(QString::fromUtf8("comboBox_Clients"));
         comboBox_Clients->setGeometry(QRect(180, 180, 101, 61));
+        label_IP = new QLabel(centralWidget);
+        label_IP->setObjectName(QString::fromUtf8("label_IP"));
+        label_IP->setGeometry(QRect(450, 70, 47, 13));
         MainWindow_Server->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow_Server);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -71,6 +76,7 @@ public:
     {
         MainWindow_Server->setWindowTitle(QCoreApplication::translate("MainWindow_Server", "MainWindow_Server", nullptr));
         checkBox_tray->setText(QCoreApplication::translate("MainWindow_Server", "CheckBox", nullptr));
+        label_IP->setText(QCoreApplication::translate("MainWindow_Server", "TextLabel", nullptr));
     } // retranslateUi
 
 };
