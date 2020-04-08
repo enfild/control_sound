@@ -227,6 +227,8 @@ release/moc_mainwindow.cpp: ../mainwindow.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtCore/QString \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/QNetworkInterface \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/qnetworkinterface.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/bin/moc.exe
 	C:\Qt\Qt5.13.0\5.13.0\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/qwert/Desktop/volume/control_volume_client/bin/release/moc_predefs.h -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/mkspecs/win32-g++ -IC:/Users/qwert/Desktop/volume/control_volume_client -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtGui -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtANGLE -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork -IC:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtCore -I. -IC:/Qt/Qt5.13.0/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Qt5.13.0/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Qt5.13.0/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Qt5.13.0/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Qt5.13.0/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Qt5.13.0/Tools/mingw730_64/x86_64-w64-mingw32/include ..\mainwindow.h -o release\moc_mainwindow.cpp
@@ -376,6 +378,8 @@ release/main.o: ../main.cpp ../mainwindow.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtCore/QString \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/QNetworkInterface \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/qnetworkinterface.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -507,6 +511,8 @@ release/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtCore/QString \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/QNetworkInterface \
+		C:/Qt/Qt5.13.0/5.13.0/mingw73_64/include/QtNetwork/qnetworkinterface.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\mainwindow.cpp
 

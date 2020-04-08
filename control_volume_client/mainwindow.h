@@ -9,7 +9,9 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QString>
+#include <QNetworkInterface>
 
+#define DEFAULT_PORT    8080
 #define SPACE 0x20
 
 namespace Ui {
@@ -30,6 +32,12 @@ public:
     ~MainWindow();
 
 private:
+    void Create_Client();
+    bool SendData(QByteArray Data);
+    int GetVolume();
+    bool SendVolume();
+    bool SendKey();
+    void timeDisconnect();
     QTcpSocket *m_socket;
 
     bool server_status;
@@ -46,16 +54,9 @@ signals:
     void connectionToServer(bool connection);
 
 public slots:
-    //server COMP
-//    void Create_Server();
-
-    //client TELEFONE
-    void Create_Client();
-    bool SendData(QByteArray Data);
-    int GetVolume();
-    bool SendVolume();
-    bool SendKey(Qt::Key key);
-    void timeDisconnect();
+    void on_pushButtonConnect_clicked();
+    void on_pushButtonPause_clicked();
+    void on_pushButtonSetVolume_clicked();
 };
 
 #endif // MAINWINDOW_H

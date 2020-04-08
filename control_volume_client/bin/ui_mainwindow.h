@@ -29,15 +29,15 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLineEdit *lineEdit_IP;
-    QLineEdit *lineEdit_PORT;
-    QLabel *label;
     QPushButton *pushButtonConnect;
     QSpinBox *spinBox;
+    QLabel *label_2;
+    QLabel *label_3;
     QPushButton *pushButtonPause;
-    QPushButton *pushButton;
+    QLabel *label;
+    QPushButton *pushButtonSetVolume;
+    QLineEdit *lineEdit_PORT;
+    QLineEdit *lineEdit_IP;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,65 +53,65 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        QFont font;
-        font.setPointSize(15);
-        label_2->setFont(font);
-
-        gridLayout->addWidget(label_2, 0, 0, 1, 1);
-
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font);
-
-        gridLayout->addWidget(label_3, 0, 1, 1, 1);
-
-        lineEdit_IP = new QLineEdit(centralWidget);
-        lineEdit_IP->setObjectName(QString::fromUtf8("lineEdit_IP"));
-        lineEdit_IP->setMinimumSize(QSize(0, 100));
-        QFont font1;
-        font1.setPointSize(24);
-        lineEdit_IP->setFont(font1);
-
-        gridLayout->addWidget(lineEdit_IP, 1, 0, 1, 1);
-
-        lineEdit_PORT = new QLineEdit(centralWidget);
-        lineEdit_PORT->setObjectName(QString::fromUtf8("lineEdit_PORT"));
-        lineEdit_PORT->setMinimumSize(QSize(0, 100));
-        lineEdit_PORT->setFont(font1);
-
-        gridLayout->addWidget(lineEdit_PORT, 1, 1, 1, 1);
-
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setFont(font);
-
-        gridLayout->addWidget(label, 2, 1, 1, 1);
-
         pushButtonConnect = new QPushButton(centralWidget);
         pushButtonConnect->setObjectName(QString::fromUtf8("pushButtonConnect"));
-        pushButtonConnect->setFont(font1);
+        QFont font;
+        font.setPointSize(24);
+        pushButtonConnect->setFont(font);
 
         gridLayout->addWidget(pushButtonConnect, 3, 0, 1, 1);
 
         spinBox = new QSpinBox(centralWidget);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setFont(font1);
+        spinBox->setFont(font);
 
         gridLayout->addWidget(spinBox, 3, 1, 1, 1);
 
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font1;
+        font1.setPointSize(15);
+        label_2->setFont(font1);
+
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
+
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font1);
+
+        gridLayout->addWidget(label_3, 0, 1, 1, 1);
+
         pushButtonPause = new QPushButton(centralWidget);
         pushButtonPause->setObjectName(QString::fromUtf8("pushButtonPause"));
-        pushButtonPause->setFont(font1);
+        pushButtonPause->setFont(font);
 
         gridLayout->addWidget(pushButtonPause, 4, 0, 1, 1);
 
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setFont(font1);
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setFont(font1);
 
-        gridLayout->addWidget(pushButton, 5, 0, 1, 1);
+        gridLayout->addWidget(label, 2, 1, 1, 1);
+
+        pushButtonSetVolume = new QPushButton(centralWidget);
+        pushButtonSetVolume->setObjectName(QString::fromUtf8("pushButtonSetVolume"));
+        pushButtonSetVolume->setFont(font);
+
+        gridLayout->addWidget(pushButtonSetVolume, 5, 0, 1, 1);
+
+        lineEdit_PORT = new QLineEdit(centralWidget);
+        lineEdit_PORT->setObjectName(QString::fromUtf8("lineEdit_PORT"));
+        lineEdit_PORT->setMinimumSize(QSize(0, 100));
+        lineEdit_PORT->setFont(font);
+
+        gridLayout->addWidget(lineEdit_PORT, 1, 1, 1, 1);
+
+        lineEdit_IP = new QLineEdit(centralWidget);
+        lineEdit_IP->setObjectName(QString::fromUtf8("lineEdit_IP"));
+        lineEdit_IP->setMinimumSize(QSize(0, 100));
+        lineEdit_IP->setFont(font);
+
+        gridLayout->addWidget(lineEdit_IP, 1, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -133,12 +133,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        pushButtonConnect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "IP", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "PORT", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "volume", nullptr));
-        pushButtonConnect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         pushButtonPause->setText(QCoreApplication::translate("MainWindow", "Pause", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Set Volume", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "volume", nullptr));
+        pushButtonSetVolume->setText(QCoreApplication::translate("MainWindow", "Set Volume", nullptr));
     } // retranslateUi
 
 };

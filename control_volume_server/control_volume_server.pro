@@ -33,9 +33,12 @@ HEADERS += \
 
 FORMS += \
         mainwindow_server.ui
-#LIBS += C:/Qt/mathgl-1.11.2-mingw.i686/lib/
+
+#LIBS += Ole32.Lib
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32: LIBS += -lOle32

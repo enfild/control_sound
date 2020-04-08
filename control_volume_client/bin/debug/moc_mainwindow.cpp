@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[12];
-    char stringdata0[111];
+    QByteArrayData data[7];
+    char stringdata0[129];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,20 +36,15 @@ QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 18), // "connectionToServer"
 QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 10), // "connection"
-QT_MOC_LITERAL(4, 42, 13), // "Create_Client"
-QT_MOC_LITERAL(5, 56, 8), // "SendData"
-QT_MOC_LITERAL(6, 65, 4), // "Data"
-QT_MOC_LITERAL(7, 70, 9), // "GetVolume"
-QT_MOC_LITERAL(8, 80, 10), // "SendVolume"
-QT_MOC_LITERAL(9, 91, 7), // "SendKey"
-QT_MOC_LITERAL(10, 99, 7), // "Qt::Key"
-QT_MOC_LITERAL(11, 107, 3) // "key"
+QT_MOC_LITERAL(4, 42, 28), // "on_pushButtonConnect_clicked"
+QT_MOC_LITERAL(5, 71, 26), // "on_pushButtonPause_clicked"
+QT_MOC_LITERAL(6, 98, 30) // "on_pushButtonSetVolume_clicked"
 
     },
     "MainWindow\0connectionToServer\0\0"
-    "connection\0Create_Client\0SendData\0"
-    "Data\0GetVolume\0SendVolume\0SendKey\0"
-    "Qt::Key\0key"
+    "connection\0on_pushButtonConnect_clicked\0"
+    "on_pushButtonPause_clicked\0"
+    "on_pushButtonSetVolume_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +54,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,24 +62,20 @@ static const uint qt_meta_data_MainWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   47,    2, 0x0a /* Public */,
-       5,    1,   48,    2, 0x0a /* Public */,
-       7,    0,   51,    2, 0x0a /* Public */,
-       8,    0,   52,    2, 0x0a /* Public */,
-       9,    1,   53,    2, 0x0a /* Public */,
+       4,    0,   37,    2, 0x0a /* Public */,
+       5,    0,   38,    2, 0x0a /* Public */,
+       6,    0,   39,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool,    3,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Bool, QMetaType::QByteArray,    6,
-    QMetaType::Int,
-    QMetaType::Bool,
-    QMetaType::Bool, 0x80000000 | 10,   11,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -96,15 +87,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->connectionToServer((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 1: _t->Create_Client(); break;
-        case 2: { bool _r = _t->SendData((*reinterpret_cast< QByteArray(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 3: { int _r = _t->GetVolume();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 4: { bool _r = _t->SendVolume();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 5: { bool _r = _t->SendKey((*reinterpret_cast< Qt::Key(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 1: _t->on_pushButtonConnect_clicked(); break;
+        case 2: _t->on_pushButtonPause_clicked(); break;
+        case 3: _t->on_pushButtonSetVolume_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -148,13 +133,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 4;
     }
     return _id;
 }

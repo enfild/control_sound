@@ -21,6 +21,7 @@
 #include <windows.h>
 
 #define DEFAULT_PORT    8080
+#define SPACE 0x20
 
 namespace Ui {
 class MainWindow_Server;
@@ -43,11 +44,9 @@ private:
     bool getMuteStatus();
     void setMuteVolume();
 
-
     QTcpServer *server;
     /* Объявляем объект будущей иконки приложения для трея */
     QSystemTrayIcon         * trayIcon;
-
     QMenu * menu;
     QAction * viewWindow;
     QAction * quitAction;
@@ -74,6 +73,7 @@ private slots:
 
     void emitKeyPresed(quint8 keyComand, quint8 key);
 
+    void on_pushButton_Connect_clicked();
 };
 
 #endif // MAINWINDOW_SERVER_H

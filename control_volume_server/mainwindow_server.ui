@@ -11,16 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow_Server</string>
+   <string>Server Sound</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QSlider" name="horizontalSlider">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>370</y>
-      <width>160</width>
-      <height>16</height>
+      <x>130</x>
+      <y>300</y>
+      <width>401</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="orientation">
@@ -30,8 +30,8 @@
    <widget class="QCheckBox" name="checkBox_tray">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
+      <x>100</x>
+      <y>0</y>
       <width>72</width>
       <height>19</height>
      </rect>
@@ -43,24 +43,62 @@
    <widget class="QComboBox" name="comboBox_Clients">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>180</y>
-      <width>101</width>
+      <x>80</x>
+      <y>170</y>
+      <width>521</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>21</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="label_IP">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>70</y>
-      <width>47</width>
-      <height>13</height>
+      <x>40</x>
+      <y>50</y>
+      <width>91</width>
+      <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>IP</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>30</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Connect">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>370</y>
+      <width>251</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Create Server</string>
     </property>
    </widget>
   </widget>

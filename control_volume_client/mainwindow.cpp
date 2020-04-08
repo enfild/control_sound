@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->spinBox->setRange(0,100);
+
 }
 
 MainWindow::~MainWindow()
@@ -16,30 +17,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::Create_Server() {
-//    int PORT = ui->lineEdit_PORT->text().toInt();
 
-//    //    int socket = ui->spinBox->value(); //set value
-//    //    QString sdfig = ui->lineEdit->text();
-
-//    tcpServer = new QTcpServer(this);
-//    connect(tcpServer, SIGNAL(newConnection()), this, SLOT(newuser()));
-//    if (!tcpServer->listen(QHostAddress::Any, PORT)) {
-//        qDebug() <<  QObject::tr("Unable to start the server: %1.").arg(tcpServer->errorString());
-//    } else {
-//        server_status=1;
-//        qDebug() << tcpServer->isListening() << "TCPSocket listen on port";
-//        qDebug() << QString::fromUtf8("Сервер запущен!");
-//    }
-//}
 // CREATE CLIEN     -----CLIENT
 void MainWindow::Create_Client()
 {
     QString IPaddres = ui->lineEdit_IP->text();
     int PORT = ui->lineEdit_PORT->text().toInt();
     m_socket = new QTcpSocket;
-    m_socket->connectToHost(IPaddres, PORT);
-    if(!m_socket->waitForConnected(1000)){
+    m_socket->connectToHost("127.0.0.4", PORT);
+    if(!m_socket->waitForConnected(10000)){
         QMessageBox::critical(this, "Error", "Can't connect to host:" + IPaddres + "::" + QString::number(PORT));
     }
     if(m_socket->waitForConnected())
@@ -52,6 +38,7 @@ void MainWindow::Create_Client()
         {
             return;
         }
+        GetVolume();
     }
 }
 
@@ -61,13 +48,14 @@ int MainWindow::GetVolume(){
         return 0;
     }
     m_socket->write(Key_Words.GET_VOL.toUtf8());
-    if(m_socket->waitForBytesWritten(10))
+    if(m_socket->waitForBytesWritten())
     {
         while(m_socket->bytesAvailable())
         {
             QByteArray dataRead = m_socket->readAll();
             int val = dataRead.toInt();
             return val;
+            ui->spinBox->setValue(val);
         }
     }
 }
@@ -78,10 +66,10 @@ bool MainWindow::SendVolume()
     return SendData(QByteArray::number(ui->spinBox->value()));
 }
 
-bool MainWindow::SendKey(Qt::Key key)
+bool MainWindow::SendKey()
 {
-    qDebug() << key;
     auto keyCommand = SPACE;
+    qDebug() << keyCommand;
     return SendData(QByteArray::number(keyCommand));
 }
 
@@ -95,8 +83,8 @@ bool MainWindow::SendData(QByteArray Data)
     {
         m_socket->connectToHost(IPaddres, PORT);
     }
-        m_socket->write(Data);
-        return true;
+    m_socket->write(Data);
+    return true;
 }
 
 void MainWindow::timeDisconnect()
@@ -109,4 +97,17 @@ void MainWindow::timeDisconnect()
 
 
 
+void MainWindow::on_pushButtonConnect_clicked()
+{
+    Create_Client();
+}
 
+void MainWindow::on_pushButtonPause_clicked()
+{
+    SendKey();
+}
+
+void MainWindow::on_pushButtonSetVolume_clicked()
+{
+    SendVolume();
+}
