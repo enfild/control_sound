@@ -23,9 +23,12 @@ void MainWindow::Create_Client()
 {
     QString IPaddres = ui->lineEdit_IP->text();
     int PORT = ui->lineEdit_PORT->text().toInt();
+
     m_socket = new QTcpSocket;
-    m_socket->connectToHost("127.0.0.4", PORT);
-    if(!m_socket->waitForConnected(10000)){
+    m_socket->connectToHost("Any", DEFAULT_PORT);
+    qDebug() << m_socket->isValid() + "SOCKET";
+    if(!m_socket->waitForConnected(10000))
+    {
         QMessageBox::critical(this, "Error", "Can't connect to host:" + IPaddres + "::" + QString::number(PORT));
     }
     if(m_socket->waitForConnected())
@@ -38,7 +41,6 @@ void MainWindow::Create_Client()
         {
             return;
         }
-        GetVolume();
     }
 }
 

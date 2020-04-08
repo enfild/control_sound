@@ -22,7 +22,7 @@ MainWindow_Server::MainWindow_Server(QWidget *parent) :
         if(adress[i].protocol() == QAbstractSocket::IPv4Protocol)
             ui->comboBox_Clients->addItem(adress[i].toString());
     }
-    for(int i = 0; i < ui->comboBox_Clients->count(); i++)
+    for(int i = ui->comboBox_Clients->count(); i > 0; i--)
     {
         if((ui->comboBox_Clients->itemText(i).indexOf("192.168.") != -1) || (ui->comboBox_Clients->itemText(i).indexOf("172.") != -1))
         {
@@ -31,10 +31,16 @@ MainWindow_Server::MainWindow_Server(QWidget *parent) :
         }
 
         if(i == (ui->comboBox_Clients->count() - 1))//если не нашел нужный сервер
+        {
             ui->comboBox_Clients->setCurrentText("127.0.0.1");
+        }
     }
-    connect(server, SIGNAL(newConnection()), this, SLOT(newClient()));//слот по новому подключению
 
+//    setVolumeLevel(25);
+
+    connect(server, SIGNAL(newConnection()), this, SLOT(newClient()));//слот по новому подключению
+    qDebug() << "Connect to newClient";
+    qDebug() << server;
     //tray
     /* Инициализируем иконку трея, устанавливаем иконку из набора системных иконок,
          * а также задаем всплывающую подсказку
@@ -185,7 +191,7 @@ void MainWindow_Server::on_comboBox_ipServer_currentIndexChanged(const QString &
     lableIpServer.setStyleSheet("QLabel{background-color: rgb(255, 0, 0);}");
     if(server->isListening())
         server->close();
-    if(!server->listen(QHostAddress(arg1), DEFAULT_PORT))
+    if(!server->listen(QHostAddress("Any"), DEFAULT_PORT))
     {
         QMessageBox::critical(this, tr("Error connect"), tr("Client -- ") + arg1 );
     }
@@ -238,17 +244,29 @@ void MainWindow_Server::newClient()
 {
     //        int PORT = ui->lineEdit_PORT->text().toInt();
 
+//    QTcpServer *to_client;
+
+//        if (!to_client->listen(QHostAddress::Any, DEFAULT_PORT)) {
+//            qDebug() <<  QObject::tr("Unable to start the server: %1.").arg(to_client->errorString());
+//        } else {
+//            bool server_status=1;
+//            qDebug() << to_client->isListening() << "TCPSocket listen on port";
+//            qDebug() << QString::fromUtf8("Сервер запущен!");
+//        }
+
+
     QTcpSocket *client = server->nextPendingConnection();
+
     qDebug() << "client->";
 
     connect(client, SIGNAL(readyRead()), this, SLOT(readDataClient()));
     connect(client, SIGNAL(disconnected()), this, SLOT(clientDisconected()));
 
-    QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon(QSystemTrayIcon::Information);
-    trayIcon->showMessage("Volume server",
-                          tr("New connection : ") + client->peerAddress().toString(),
-                          icon,
-                          1000);
+//    QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon(QSystemTrayIcon::Information);
+//    trayIcon->showMessage("Volume server",
+//                          tr("New connection : ") + to_client->peerAddress().toString(),
+//                          icon,
+//                          1000);
 }
 
 void MainWindow_Server::clientDisconected()
@@ -260,8 +278,13 @@ void MainWindow_Server::clientDisconected()
 
 void MainWindow_Server::readDataClient()
 {
+    qDebug() << "start";
+
     QTcpSocket* client = (QTcpSocket*)sender();
+
     QByteArray dataClient = client->readAll();
+    qDebug() << dataClient + "-------DATA";
+
     auto Check_Space = SPACE;
     if(dataClient == Key_Words.GET_VOL.toUtf8()){
         QByteArray Send_Volume_bytes;

@@ -132,7 +132,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Sound Client", nullptr));
         pushButtonConnect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "IP", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "PORT", nullptr));
