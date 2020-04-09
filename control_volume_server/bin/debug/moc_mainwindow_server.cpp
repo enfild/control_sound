@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_Server_t {
-    QByteArrayData data[14];
-    char stringdata0[221];
+    QByteArrayData data[15];
+    char stringdata0[229];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,20 +40,21 @@ QT_MOC_LITERAL(4, 47, 14), // "readDataClient"
 QT_MOC_LITERAL(5, 62, 13), // "iconActivated"
 QT_MOC_LITERAL(6, 76, 33), // "QSystemTrayIcon::ActivationRe..."
 QT_MOC_LITERAL(7, 110, 6), // "reason"
-QT_MOC_LITERAL(8, 117, 40), // "on_comboBox_ipServer_currentI..."
-QT_MOC_LITERAL(9, 158, 4), // "arg1"
-QT_MOC_LITERAL(10, 163, 13), // "emitKeyPresed"
-QT_MOC_LITERAL(11, 177, 9), // "keyComand"
-QT_MOC_LITERAL(12, 187, 3), // "key"
-QT_MOC_LITERAL(13, 191, 29) // "on_pushButton_Connect_clicked"
+QT_MOC_LITERAL(8, 117, 39), // "on_comboBox_Clients_currentIn..."
+QT_MOC_LITERAL(9, 157, 4), // "arg1"
+QT_MOC_LITERAL(10, 162, 13), // "emitKeyPresed"
+QT_MOC_LITERAL(11, 176, 9), // "keyComand"
+QT_MOC_LITERAL(12, 186, 3), // "key"
+QT_MOC_LITERAL(13, 190, 32), // "on_horizontalSlider_valueChanged"
+QT_MOC_LITERAL(14, 223, 5) // "value"
 
     },
     "MainWindow_Server\0newClient\0\0"
     "clientDisconected\0readDataClient\0"
     "iconActivated\0QSystemTrayIcon::ActivationReason\0"
-    "reason\0on_comboBox_ipServer_currentIndexChanged\0"
+    "reason\0on_comboBox_Clients_currentIndexChanged\0"
     "arg1\0emitKeyPresed\0keyComand\0key\0"
-    "on_pushButton_Connect_clicked"
+    "on_horizontalSlider_valueChanged\0value"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,7 +78,7 @@ static const uint qt_meta_data_MainWindow_Server[] = {
        5,    1,   52,    2, 0x08 /* Private */,
        8,    1,   55,    2, 0x08 /* Private */,
       10,    2,   58,    2, 0x08 /* Private */,
-      13,    0,   63,    2, 0x08 /* Private */,
+      13,    1,   63,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -86,7 +87,7 @@ static const uint qt_meta_data_MainWindow_Server[] = {
     QMetaType::Void, 0x80000000 | 6,    7,
     QMetaType::Void, QMetaType::QString,    9,
     QMetaType::Void, QMetaType::UChar, QMetaType::UChar,   11,   12,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   14,
 
        0        // eod
 };
@@ -101,9 +102,9 @@ void MainWindow_Server::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 1: _t->clientDisconected(); break;
         case 2: _t->readDataClient(); break;
         case 3: _t->iconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
-        case 4: _t->on_comboBox_ipServer_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->on_comboBox_Clients_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 5: _t->emitKeyPresed((*reinterpret_cast< quint8(*)>(_a[1])),(*reinterpret_cast< quint8(*)>(_a[2]))); break;
-        case 6: _t->on_pushButton_Connect_clicked(); break;
+        case 6: _t->on_horizontalSlider_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }

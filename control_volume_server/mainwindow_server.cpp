@@ -7,10 +7,10 @@ MainWindow_Server::MainWindow_Server(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices(QAudio::AudioOutput))
-    {
-        qDebug() << "Audio device name: " << deviceInfo.deviceName();
-    }
+//    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices(QAudio::AudioOutput))
+//    {
+//        qDebug() << "Audio device name: " << deviceInfo.deviceName();
+//    }
 
     server = new QTcpServer();
 
@@ -185,8 +185,9 @@ void MainWindow_Server::setMuteVolume()
         Q_UNUSED(hr);
 }
 
-void MainWindow_Server::on_comboBox_ipServer_currentIndexChanged(const QString &arg1)
+void MainWindow_Server::on_comboBox_Clients_currentIndexChanged(const QString &arg1)
 {
+    qDebug() << arg1 + "ARGUMENT";
     ui->label_IP->setStyleSheet("QLabel{background-color: rgb(255, 0, 0);}");
     lableIpServer.setStyleSheet("QLabel{background-color: rgb(255, 0, 0);}");
     if(server->isListening())
@@ -221,12 +222,13 @@ void MainWindow_Server::emitKeyPresed(quint8 keyComand, quint8 key)
     qDebug() << "key";
 }
 
-void MainWindow_Server::closeWindow(QCloseEvent *event)
+void MainWindow_Server::closeEvent(QCloseEvent *event)
 {
     /* Если окно видимо и чекбокс отмечен, то завершение приложения
          * игнорируется, а окно просто скрывается, что сопровождается
          * соответствующим всплывающим сообщением
          */
+    qDebug() << "close";
     if(this->isVisible() && ui->checkBox_tray->isChecked()){
         event->ignore();
         this->hide();
@@ -286,15 +288,19 @@ void MainWindow_Server::readDataClient()
     qDebug() << dataClient + "-------DATA";
 
     auto Check_Space = SPACE;
+
     if(dataClient == Key_Words.GET_VOL.toUtf8()){
         QByteArray Send_Volume_bytes;
         Send_Volume_bytes.append(getVolumeLevel());
         client->write(Send_Volume_bytes);
+        qDebug() << Send_Volume_bytes;
     }
 
-    else if(dataClient.toInt() == Check_Space)
+    else if(dataClient.toInt() == SPACE)
     {
-        setMuteVolume();
+//        setMuteVolume();
+        qDebug() << "play";
+        emitKeyPresed(0, VK_MEDIA_PLAY_PAUSE);
     }
 
     else if(dataClient.toInt()>= 0) {
@@ -335,9 +341,7 @@ void MainWindow_Server::iconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 
 
-
-
-void MainWindow_Server::on_pushButton_Connect_clicked()
+void MainWindow_Server::on_horizontalSlider_valueChanged(int value)
 {
-    newClient();
+    setVolumeLevel(value);
 }

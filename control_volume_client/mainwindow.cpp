@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->spinBox->setRange(0,100);
+    ui->lineEdit_PORT->setText("8080");
 
 }
 
@@ -22,11 +23,11 @@ MainWindow::~MainWindow()
 void MainWindow::Create_Client()
 {
     QString IPaddres = ui->lineEdit_IP->text();
-    int PORT = ui->lineEdit_PORT->text().toInt();
+    quint16 PORT = ui->lineEdit_PORT->text().toUInt();
 
     m_socket = new QTcpSocket;
-    m_socket->connectToHost("Any", DEFAULT_PORT);
-    qDebug() << m_socket->isValid() + "SOCKET";
+    m_socket->connectToHost(IPaddres, PORT);
+    qDebug() << m_socket->isValid() << "SOCKET";
     if(!m_socket->waitForConnected(10000))
     {
         QMessageBox::critical(this, "Error", "Can't connect to host:" + IPaddres + "::" + QString::number(PORT));
@@ -47,17 +48,19 @@ void MainWindow::Create_Client()
 //GetVolume from server   -----CLIENT
 int MainWindow::GetVolume(){
     if(!m_socket->isOpen()){
+        qDebug() << "is not open";
         return 0;
     }
     m_socket->write(Key_Words.GET_VOL.toUtf8());
     if(m_socket->waitForBytesWritten())
     {
-        while(m_socket->bytesAvailable())
+        if(m_socket->waitForReadyRead())
         {
             QByteArray dataRead = m_socket->readAll();
-            int val = dataRead.toInt();
-            return val;
+            qDebug() << dataRead;
+            int val = dataRead.at(0);
             ui->spinBox->setValue(val);
+            return val;
         }
     }
 }
@@ -70,9 +73,9 @@ bool MainWindow::SendVolume()
 
 bool MainWindow::SendKey()
 {
-    auto keyCommand = SPACE;
-    qDebug() << keyCommand;
-    return SendData(QByteArray::number(keyCommand));
+//    auto keyCommand = SPACE;
+//    qDebug() << keyCommand;
+    return SendData(QByteArray::number(SPACE));
 }
 
 //SendDATA to server   -----CLIENT
