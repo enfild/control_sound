@@ -7,8 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->spinBox->setRange(0,100);
+
+
+
+//    ui->spinBox->setRange(0,100);
+
     ui->lineEdit_PORT->setText("8080");
+
+    ui->horizontalSlider_Volume->setMaximum(100);
+    ui->horizontalSlider_Volume->setMinimum(0);
 
 }
 
@@ -36,7 +43,11 @@ void MainWindow::Create_Client()
     {
         emit connectionToServer(true);
         int Valume = GetVolume();
-        ui->spinBox->setValue(Valume);
+
+//        ui->spinBox->setValue(Valume);
+
+        ui->horizontalSlider_Volume->setValue(Valume);
+
         qDebug() << "volume is:" << Valume;
         if(Valume == -1)
         {
@@ -59,7 +70,11 @@ int MainWindow::GetVolume(){
             QByteArray dataRead = m_socket->readAll();
             qDebug() << dataRead;
             int val = dataRead.at(0);
-            ui->spinBox->setValue(val);
+
+//            ui->spinBox->setValue(val);
+            ui->horizontalSlider_Volume->setValue(val);
+
+
             return val;
         }
     }
@@ -68,7 +83,7 @@ int MainWindow::GetVolume(){
 //SendVOLUMEto server   -----CLIENT
 bool MainWindow::SendVolume()
 {
-    return SendData(QByteArray::number(ui->spinBox->value()));
+    return SendData(QByteArray::number(ui->horizontalSlider_Volume->value()));
 }
 
 bool MainWindow::SendKey()
@@ -115,4 +130,9 @@ void MainWindow::on_pushButtonPause_clicked()
 void MainWindow::on_pushButtonSetVolume_clicked()
 {
     SendVolume();
+}
+
+void MainWindow::on_horizontalSlider_Volume_valueChanged(int value)
+{
+
 }

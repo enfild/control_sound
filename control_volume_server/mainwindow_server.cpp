@@ -158,6 +158,7 @@ void MainWindow_Server::setVolumeLevel(int Volume)
     CoUninitialize();
 
     Q_UNUSED(hr);
+    ui->horizontalSlider->setValue(Volume);
 }
 
 void MainWindow_Server::setMuteVolume()

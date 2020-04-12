@@ -17,7 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -30,7 +30,6 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QPushButton *pushButtonConnect;
-    QSpinBox *spinBox;
     QLabel *label_2;
     QLabel *label_3;
     QPushButton *pushButtonPause;
@@ -38,6 +37,8 @@ public:
     QPushButton *pushButtonSetVolume;
     QLineEdit *lineEdit_PORT;
     QLineEdit *lineEdit_IP;
+    QSlider *horizontalSlider_Volume;
+    QLineEdit *lineEdit_valVolume;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -61,12 +62,6 @@ public:
 
         gridLayout->addWidget(pushButtonConnect, 3, 0, 1, 1);
 
-        spinBox = new QSpinBox(centralWidget);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setFont(font);
-
-        gridLayout->addWidget(spinBox, 3, 1, 1, 1);
-
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         QFont font1;
@@ -89,7 +84,9 @@ public:
 
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setFont(font1);
+        QFont font2;
+        font2.setPointSize(21);
+        label->setFont(font2);
 
         gridLayout->addWidget(label, 2, 1, 1, 1);
 
@@ -112,6 +109,18 @@ public:
         lineEdit_IP->setFont(font);
 
         gridLayout->addWidget(lineEdit_IP, 1, 0, 1, 1);
+
+        horizontalSlider_Volume = new QSlider(centralWidget);
+        horizontalSlider_Volume->setObjectName(QString::fromUtf8("horizontalSlider_Volume"));
+        horizontalSlider_Volume->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(horizontalSlider_Volume, 4, 1, 1, 1);
+
+        lineEdit_valVolume = new QLineEdit(centralWidget);
+        lineEdit_valVolume->setObjectName(QString::fromUtf8("lineEdit_valVolume"));
+        lineEdit_valVolume->setFont(font2);
+
+        gridLayout->addWidget(lineEdit_valVolume, 3, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -137,7 +146,7 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "IP", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "PORT", nullptr));
         pushButtonPause->setText(QCoreApplication::translate("MainWindow", "Pause", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "volume", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Volume", nullptr));
         pushButtonSetVolume->setText(QCoreApplication::translate("MainWindow", "Set Volume", nullptr));
     } // retranslateUi
 

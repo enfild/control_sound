@@ -27,15 +27,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QSpinBox" name="spinBox">
-      <property name="font">
-       <font>
-        <pointsize>24</pointsize>
-       </font>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label_2">
       <property name="font">
@@ -76,11 +67,11 @@
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>21</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>volume</string>
+       <string>Volume</string>
       </property>
      </widget>
     </item>
@@ -122,6 +113,22 @@
       <property name="font">
        <font>
         <pointsize>24</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QSlider" name="horizontalSlider_Volume">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lineEdit_valVolume">
+      <property name="font">
+       <font>
+        <pointsize>21</pointsize>
        </font>
       </property>
      </widget>

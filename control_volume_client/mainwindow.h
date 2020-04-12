@@ -57,6 +57,8 @@ public slots:
     void on_pushButtonConnect_clicked();
     void on_pushButtonPause_clicked();
     void on_pushButtonSetVolume_clicked();
+private slots:
+    void on_horizontalSlider_Volume_valueChanged(int value);
 };
 
 #endif // MAINWINDOW_H
