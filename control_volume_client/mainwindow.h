@@ -12,10 +12,9 @@
 #include <QNetworkInterface>
 
 #define DEFAULT_PORT    8080
-#define SPACE 0x20
+#define SET_PAUSE 0x20
 
 namespace Ui {
-
 
 class MainWindow;
 
@@ -39,25 +38,22 @@ private:
     bool SendKey();
     void timeDisconnect();
     QTcpSocket *m_socket;
-
     bool server_status;
-
     Ui::MainWindow *ui;
-
+    //for new command
     struct{
-        const QString SET_VOL = "SET_VOL"; // to client
-        const QString GET_VOL = "GET_VOL"; // from client
-        const QString SET_KEY = "SET_KEY";
+        const QString GET_VOL = "GET_VOL";
     }Key_Words ;
 
 signals:
     void connectionToServer(bool connection);
 
 public slots:
+
+private slots:
     void on_pushButtonConnect_clicked();
     void on_pushButtonPause_clicked();
     void on_pushButtonSetVolume_clicked();
-private slots:
     void on_horizontalSlider_Volume_valueChanged(int value);
 };
 

@@ -1,22 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-//#define SERV
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-
-//    ui->spinBox->setRange(0,100);
-
     ui->lineEdit_PORT->setText("8080");
-
     ui->horizontalSlider_Volume->setMaximum(100);
     ui->horizontalSlider_Volume->setMinimum(0);
-
 }
 
 MainWindow::~MainWindow()
@@ -25,13 +17,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-// CREATE CLIEN     -----CLIENT
 void MainWindow::Create_Client()
 {
     QString IPaddres = ui->lineEdit_IP->text();
     quint16 PORT = ui->lineEdit_PORT->text().toUInt();
-
     m_socket = new QTcpSocket;
     m_socket->connectToHost(IPaddres, PORT);
     qDebug() << m_socket->isValid() << "SOCKET";
@@ -43,11 +32,6 @@ void MainWindow::Create_Client()
     {
         emit connectionToServer(true);
         int Valume = GetVolume();
-
-//        ui->spinBox->setValue(Valume);
-
-        ui->horizontalSlider_Volume->setValue(Valume);
-
         qDebug() << "volume is:" << Valume;
         if(Valume == -1)
         {
@@ -56,7 +40,6 @@ void MainWindow::Create_Client()
     }
 }
 
-//GetVolume from server   -----CLIENT
 int MainWindow::GetVolume(){
     if(!m_socket->isOpen()){
         qDebug() << "is not open";
@@ -70,17 +53,13 @@ int MainWindow::GetVolume(){
             QByteArray dataRead = m_socket->readAll();
             qDebug() << dataRead;
             int val = dataRead.at(0);
-
-//            ui->spinBox->setValue(val);
+            ui->lineEdit_valVolume->setText(QString::number(val));
             ui->horizontalSlider_Volume->setValue(val);
-
-
             return val;
         }
     }
 }
 
-//SendVOLUMEto server   -----CLIENT
 bool MainWindow::SendVolume()
 {
     return SendData(QByteArray::number(ui->horizontalSlider_Volume->value()));
@@ -88,17 +67,13 @@ bool MainWindow::SendVolume()
 
 bool MainWindow::SendKey()
 {
-//    auto keyCommand = SPACE;
-//    qDebug() << keyCommand;
-    return SendData(QByteArray::number(SPACE));
+    return SendData(QByteArray::number(SET_PAUSE));
 }
 
-//SendDATA to server   -----CLIENT
 bool MainWindow::SendData(QByteArray Data)
 {
     QString IPaddres = ui->lineEdit_IP->text();
     int PORT = ui->lineEdit_PORT->text().toInt();
-
     if(!m_socket->isOpen())
     {
         m_socket->connectToHost(IPaddres, PORT);
@@ -113,9 +88,6 @@ void MainWindow::timeDisconnect()
     m_socket->close();
     qDebug() << "time disconnected!";
 }
-
-
-
 
 void MainWindow::on_pushButtonConnect_clicked()
 {
@@ -134,5 +106,5 @@ void MainWindow::on_pushButtonSetVolume_clicked()
 
 void MainWindow::on_horizontalSlider_Volume_valueChanged(int value)
 {
-
+    ui->lineEdit_valVolume->setText(QString::number(value));
 }

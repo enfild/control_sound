@@ -21,9 +21,7 @@
 #include <windows.h>
 
 #define DEFAULT_PORT    8080
-
-
-#define SPACE 0x20
+#define SET_PAUSE 0x20
 
 namespace Ui {
 class MainWindow_Server;
@@ -38,18 +36,13 @@ public:
     explicit MainWindow_Server(QWidget *parent = nullptr);
     ~MainWindow_Server();
 
-
-
 private:
     Ui::MainWindow_Server *ui;
-
     int getVolumeLevel();
     void setVolumeLevel(int Volume);
     bool getMuteStatus();
     void setMuteVolume();
-
     QTcpServer *server;
-    /* Объявляем объект будущей иконки приложения для трея */
     QSystemTrayIcon* trayIcon;
     QMenu* menu;
     QAction* viewWindow;
@@ -58,14 +51,12 @@ private:
     QWidgetAction* widgetActionSlider;
     QWidgetAction* widgetActionLable;
     QLabel lableIpServer;
-
+    //for new commands
     struct{
-        const QString SET_VOL = "SET_VOL"; // to client
-        const QString GET_VOL = "GET_VOL"; // from client
-        const QString SET_KEY = "SET_KEY";
+        const QString GET_VOL = "GET_VOL";
     }Key_Words;
 protected:
-void closeEvent(QCloseEvent * event);
+    void closeEvent(QCloseEvent * event);
 private slots:
     void newClient();
     void clientDisconected();
